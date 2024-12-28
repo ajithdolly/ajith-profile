@@ -19,12 +19,12 @@ function ExplorePage() {
     {
       category: 'Backend Development',
       skills: [
-        { name: 'PostgreSQL', level: 'proficient' },
         { name: 'Spring Boot', level: 'proficient' },
+        { name: 'Postgres', level: 'proficient' },
         { name: 'Mongo DB', level: 'proficient' },
-        { name: 'Mongo DB', level: 'proficient' },
-        { name: 'Mongo DB', level: 'proficient' },
-        { name: 'Git', level: 'proficient' },
+        { name: 'Rest API', level: 'proficient' },
+        { name: 'Micro services', level: 'proficient' },
+        { name: 'Devops', level: 'Experienced' },
       ],
     },
   ];

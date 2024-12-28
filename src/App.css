@@ -33,6 +33,32 @@ body {
   border: 1px solid rgba(8, 8, 8, 0.3); /* Light black border with transparency */
   border-radius: 20px; /* Proper border-radius without quotes */
 }
+
+
+  
+.containerMobile {
+  max-width:75%;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid transparent; /* Make the border transparent so the gradient shows */
+ -webkit-background-clip: border-box; /* Clip the background to the border */
+  box-shadow: 0 0 20px rgba(108, 231, 92, 0.6); /* Add a subtle glowing box-shadow */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Horizontally center items */
+  justify-content: center; /* Vertically center items */
+  height: auto; /* Ensure it takes full height of the viewport */
+  margin: 0 auto; /* Center the container itself */
+}
+
+/* Optional: Add hover effect to enhance the glow and color transition */
+.containerMobile:hover {
+box-shadow: 0 0 30px rgba(32, 30, 31, 0.8); /* Stronger glowing box-shadow on hover */
+border: 1px solid rgba(8, 8, 8, 0.3); /* Light black border with transparency */
+border-radius: 20px; /* Proper border-radius without quotes */
+}
+
+
 .containerKnowMore {
   width: 90%; /* Fixed width */
   height: 100%; /* Fixed height */
@@ -120,7 +146,7 @@ body {
     transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for text color and shadow */
 }
 
-  
+
   h1 {
     font-size: 2rem;
     margin-bottom: 20px;

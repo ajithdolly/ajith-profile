@@ -203,13 +203,13 @@ function App() {
       </> : <>
 
         {/* // this is for mobile view  */}
-      <Grid container xs={12} style={{ display: 'flex', justifyContent: "center", alignItems: 'center', paddingBottom: "10px" }}>
+      <Grid container xs={12} style={{ display: 'flex', justifyContent: "center", alignItems: 'center'}}>
         <MobileHeader onScroll={scrollHandler} />
       </Grid>
 
         <Grid
           container
-          style={{ paddingTop: "4rem" }}
+          style={{ paddingTop: "1rem" }}
         >
 
 
@@ -251,14 +251,13 @@ function App() {
               alignItems: 'center', // Center text horizontally
             }}
           >
-            <div className="container">
+            <div className="containerMobile">
               <Typography style={{ fontWeight: 'bold' }}>Hello I'm</Typography>
               <p
                 style={{
-                  fontSize: '55px',
                   fontWeight: 'bolder',
                   marginTop: '-1px',
-                  fontSize: '2rem'
+                  fontSize: '1.5rem'
                 }}
                 className={stopAnimation ? "nameWithNoEffect" : "name"}
               >
