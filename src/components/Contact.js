@@ -15,7 +15,6 @@ const Contact = () => {
 
       <Grid container alignItems="center" display="flex" justifyContent="center">
         <Grid container xs={8} lg={3} border="1px solid black" padding=".5rem" sx={{ borderRadius: '20px' }}>
-          {/* Email Section */}
           <Grid
             item
             xs={12}
