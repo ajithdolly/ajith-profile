@@ -1,0 +1,159 @@
+
+body {
+    background: linear-gradient(45deg, #030202, #241e1f);
+    color: black; /* Light green text */
+    font-family: 'Courier New', Courier, monospace; /* Console-like font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+  }
+  
+
+  
+  .container {
+    max-width:60%;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid transparent; /* Make the border transparent so the gradient shows */
+   -webkit-background-clip: border-box; /* Clip the background to the border */
+    box-shadow: 0 0 20px rgba(108, 231, 92, 0.6); /* Add a subtle glowing box-shadow */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Horizontally center items */
+    justify-content: center; /* Vertically center items */
+    height: auto; /* Ensure it takes full height of the viewport */
+    margin: 0 auto; /* Center the container itself */
+}
+
+/* Optional: Add hover effect to enhance the glow and color transition */
+.container:hover {
+  box-shadow: 0 0 30px rgba(32, 30, 31, 0.8); /* Stronger glowing box-shadow on hover */
+  border: 1px solid rgba(8, 8, 8, 0.3); /* Light black border with transparency */
+  border-radius: 20px; /* Proper border-radius without quotes */
+}
+.containerKnowMore {
+  width: 90%; /* Fixed width */
+  height: 100%; /* Fixed height */
+  border-radius:25px;
+  padding: 10px;
+  border: 1px solid black; /* Border to show the outline */
+  -webkit-background-clip: border-box; /* Clip the background to the border */
+  box-shadow: 0 0 20px rgba(108, 231, 92, 0.6); /* Add a subtle glowing box-shadow */
+  display: flex;
+  flex-direction: column; /* Stack the icon and text vertically */
+  justify-content: center; /* Center them horizontally */
+  align-items: center;     /* Center them vertically */
+  text-align: center;      /* Ensure text is centered inside */
+  /* background: linear-gradient(45deg, #6c6c6c, #241e1f); */
+  overflow: hidden; /* Optional: Prevent content from overflowing */
+}
+
+.containerKnowMore:hover {
+  box-shadow: 0 0 30px rgba(214, 103, 155, 0.8); /* Stronger glowing box-shadow on hover */
+}
+
+.containerKnowMore p {
+  margin-top: 8px; /* Add some space between the icon and the text */
+  font-size: 16px; /* Adjust the text size */
+}
+
+
+
+
+.containerKnowMoreExplore {
+  max-width:100%;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid transparent; /* Make the border transparent so the gradient shows */
+ -webkit-background-clip: border-box; /* Clip the background to the border */
+  box-shadow: 0 0 20px rgba(108, 231, 92, 0.6); /* Add a subtle glowing box-shadow */
+}
+
+.containerKnowMoreExplore:hover {
+  box-shadow: 0 0 30px rgba(214, 103, 155, 0.8); /* Stronger glowing box-shadow on hover */
+}
+  
+  
+  .name {
+    font-size: 2rem;
+    display: inline-block;
+    white-space: nowrap;
+    background: linear-gradient(to right, #000000, #000000);
+    background:'black';
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    border-right: 3px solid #00ff00; /* Cursor effect */
+    animation: blink-caret 0.75s step-end infinite; /* Blinking cursor animation */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for text color and shadow */
+}
+
+/* Blinking cursor animation */
+@keyframes blink-caret {
+    50% {
+        border-color: transparent; /* Hide the border to create the blinking effect */
+    }
+}
+
+
+
+  /* Animation for blinking cursor */
+  @keyframes blink-caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  /* When animation stops, apply this style */
+  .nameWithNoEffect {
+    font-size: 2rem; /* Font size without quotes */
+    display: inline-block;
+    white-space: nowrap;
+    background: linear-gradient(to right, #000000, #000000);
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    border: none; /* No border, unlike the .name class */
+    animation: none; /* No animation */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for text color and shadow */
+}
+
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1.2rem; /* Keep the original font size */
+    margin-bottom: 20px; /* Keep the margin at the bottom */
+    background: linear-gradient(to right, #1e90ff, #dc6f6f); /* Apply gradient to text */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 4px rgba(214, 103, 155, 0.6); /* Add glow effect around the text */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for text color and shadow */
+}
+
+  
+.link {
+    font-size: 1.2rem; /* Keep the original font size */
+    color: transparent; /* Make the text color transparent so the gradient shows */
+    background: linear-gradient(to right, #1e90ff, #dc6f6f); /* Apply gradient to text */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text transparent to show the gradient */
+    text-shadow: 1px 1px 4px rgba(214, 103, 155, 0.6); /* Add glow effect around the text */
+    text-decoration: none; /* Keep text decoration none */
+    border-bottom: 2px solid #00ff00; /* Keep the original border-bottom */
+    padding: 5px; /* Keep the padding as is */
+    transition: color 0.3s ease, text-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Optional: Add hover effect to enhance the glow and border color */
+.link:hover {
+    text-shadow: 1px 1px 6px rgba(214, 103, 155, 0.8); /* Stronger glow on hover */
+    border-color: #dc6f6f; /* Change border color on hover */
+}
+
+  

@@ -1,0 +1,56 @@
+/* Footer Styles */
+/* Footer text styles */
+.footer-text {  
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    /* Apply gradient background and text color for non-white text */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text transparent for gradient */
+    text-shadow: 2px 2px 4px rgba(214, 103, 155, 0.6); /* Glowing text effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Footer links container */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Footer links styles */
+.footer-links a {
+    
+    background: linear-gradient(to right, #0f02f7, #ec0404); /* Gradient from blue to light red */
+    -webkit-background-clip: text; /* Apply gradient to the text */
+    -webkit-text-fill-color: transparent; /* Make text transparent so the gradient shows */
+    color: transparent; /* Ensure text is transparent to show gradient */
+    text-decoration: none; /* Remove underline */
+    font-size: 1rem;
+    font-weight: normal;    
+    text-shadow: 1px 1px 4px rgba(214, 103, 155, 0.6); /* Subtle glow effect */
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for footer links */
+.footer-links a:hover {
+    color: transparent; /* Ensure gradient remains visible on hover */
+    text-shadow: 1px 1px 6px rgba(214, 103, 155, 0.8); /* Stronger glow effect on hover */
+    transform: scale(1.1); /* Slight scaling effect for hover */
+}
+
+/* Responsive Styles for smaller devices */
+@media (max-width: 768px) {
+    .footer {
+        font-size: 0.9rem; /* Slightly smaller font size */
+        padding: 15px;
+    }
+
+    .footer-text {
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem; /* Ensure link text is legible */
+    }
+}
