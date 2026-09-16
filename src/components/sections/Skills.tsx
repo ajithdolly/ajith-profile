@@ -176,7 +176,7 @@ export default function Skills() {
             ref={el => { cardsRef.current[i] = el }}
             className="absolute will-change-transform"
             style={{
-              width: 'clamp(55px, 25vw, 550px)',
+              width: 'clamp(280px, 25vw, 430px)',
               transformStyle: 'preserve-3d',
             }}
           >
@@ -198,7 +198,7 @@ export default function Skills() {
                 }}
               />
 
-              <div className="p-7" style={{ minHeight: 'clamp(460px, 60vh, 560px)', display: 'flex', flexDirection: 'column' }}>
+              <div className="p-5 md:p-7" style={{ minHeight: 'clamp(380px, 60vh, 540px)', display: 'flex', flexDirection: 'column' }}>
                 {/* Tag + counter */}
                 <div className="flex items-center justify-between mb-6">
                   <span
@@ -219,7 +219,7 @@ export default function Skills() {
                 {/* Title */}
                 <h3
                   className="font-black tracking-tight text-white leading-[1.1] mb-4 relative z-10"
-                  style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.45rem)' }}
+                  style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.45rem)' }}
                 >
                   {skill.title}
                 </h3>
@@ -260,24 +260,6 @@ export default function Skills() {
               </div>
             </div>
           </div>
-        ))}
-      </div>
-
-      {/* ── Progress pill ── */}
-      <div className="absolute right-6 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-30">
-        {skills.map((_, i) => (
-          <div
-            key={i}
-            className="rounded-full transition-all duration-300"
-            style={{
-              width: 5,
-              height: i === activeIndex ? 28 : 5,
-              backgroundColor: i === activeIndex
-                ? 'var(--color-gold-500)'
-                : 'rgba(255,255,255,0.15)',
-              boxShadow: i === activeIndex ? '0 0 8px rgba(212,175,55,0.6)' : 'none',
-            }}
-          />
         ))}
       </div>
 
