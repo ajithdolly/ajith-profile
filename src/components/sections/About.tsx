@@ -45,27 +45,85 @@ function BentoCard({ num, children, className = '' }: BentoCardProps) {
 }
 
 export default function About() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const sectionRef    = useRef<HTMLElement>(null)
+  const cardsRef      = useRef<(HTMLDivElement | null)[]>([])
+  const wordRefs      = useRef<(HTMLSpanElement | null)[]>([])
+  const labelRef      = useRef<HTMLSpanElement>(null)
+  const headingRef    = useRef<HTMLDivElement>(null)
+  const statValueRefs = useRef<(HTMLParagraphElement | null)[]>([])
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        cardsRef.current.filter(Boolean),
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
+
+      // Label slides in from left
+      gsap.fromTo(labelRef.current,
+        { x: -30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: headingRef.current, start: 'top bottom', end: 'top 10%', toggleActions: 'play reverse play reverse', invalidateOnRefresh: true } }
+      )
+
+      // Heading: ORIGIN ← from left, & pops from center, → VISION. from right — converge
+      const hST = { trigger: headingRef.current, start: 'top bottom', end: 'top 10%', toggleActions: 'play reverse play reverse', invalidateOnRefresh: true }
+      gsap.fromTo(wordRefs.current[0],
+        { x: -140, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out', scrollTrigger: hST }
+      )
+      gsap.fromTo(wordRefs.current[1],
+        { scale: 0.1, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.75, ease: 'back.out(3)', delay: 0.2, scrollTrigger: hST }
+      )
+      gsap.fromTo(wordRefs.current[2],
+        { x: 140, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out', delay: 0.1, scrollTrigger: hST }
+      )
+
+      // Bento cards: left/right/left/right alternating + full-width from bottom
+      const directions = [-130, 130, -110, 110]
+      directions.forEach((x, i) => {
+        const el = cardsRef.current[i]
+        if (!el) return
+        gsap.fromTo(el,
+          { x, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 5%', toggleActions: 'play reverse play reverse', invalidateOnRefresh: true } }
+        )
+      })
+      const last = cardsRef.current[4]
+      if (last) {
+        gsap.fromTo(last,
+          { y: 80, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.85, ease: 'power3.out',
+            scrollTrigger: { trigger: last, start: 'top bottom', end: 'top 5%', toggleActions: 'play reverse play reverse', invalidateOnRefresh: true } }
+        )
+      }
+
+      // Stats counter — triggers once on enter, reverses on leave
+      const stats = [
+        { target: 3,    suffix: '+',  decimals: 0, index: 0 },
+        { target: 100,  suffix: 'K+', decimals: 0, index: 1 },
+        { target: 2,    suffix: '',   decimals: 0, index: 2 },
+        { target: 99.9, suffix: '%',  decimals: 1, index: 3 },
+      ]
+      stats.forEach(({ target, suffix, decimals, index }) => {
+        const el = statValueRefs.current[index]
+        if (!el) return
+        const obj = { val: 0 }
+        gsap.to(obj, {
+          val: target,
+          duration: 1.8,
           ease: 'power2.out',
+          onUpdate() {
+            el.textContent = (decimals === 0 ? Math.round(obj.val) : obj.val.toFixed(1)) + suffix
+          },
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
+            trigger: cardsRef.current[2],
+            start: 'top bottom',
+            once: true,
             invalidateOnRefresh: true,
           },
-        },
-      )
+        })
+      })
+
     }, sectionRef)
     return () => ctx.revert()
   }, [])
@@ -97,21 +155,25 @@ export default function About() {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full space-y-12">
         {/* Section header */}
-        <div className="space-y-3">
+        <div ref={headingRef} className="space-y-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-gold-600 animate-ping" />
-            <span className="text-xs font-mono uppercase tracking-widest text-white/50">About Me</span>
+            <span ref={labelRef} className="text-xs font-mono uppercase tracking-widest text-white/50">About Me</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: 'linear-gradient(to right, var(--color-gold-500), var(--color-gold-400), var(--color-gold-700))',
-                filter: 'drop-shadow(0 0 30px rgba(212,175,55,0.4))',
-              }}
-            >
-              ORIGIN &amp; VISION.
-            </span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter flex flex-wrap gap-x-5">
+            {['ORIGIN', '&', 'VISION.'].map((word, i) => (
+              <span
+                key={word}
+                ref={el => { wordRefs.current[i] = el }}
+                className="inline-block text-transparent bg-clip-text"
+                style={{
+                  backgroundImage: 'linear-gradient(to right, var(--color-gold-500), var(--color-gold-400), var(--color-gold-700))',
+                  filter: 'drop-shadow(0 0 30px rgba(212,175,55,0.4))',
+                }}
+              >
+                {word}
+              </span>
+            ))}
           </h2>
         </div>
 
@@ -191,13 +253,13 @@ export default function About() {
             <BentoCard num="03" className="p-8 flex flex-col justify-center h-full min-h-[200px]">
               <div className="relative z-10 grid grid-cols-2 gap-6">
                 {[
-                  { value: '3+', label: 'Years Experience' },
+                  { value: '3+',    label: 'Years Experience' },
                   { value: '100K+', label: 'Txns/day supported' },
-                  { value: '2', label: 'Production AI Systems' },
+                  { value: '2',     label: 'Production AI Systems' },
                   { value: '99.9%', label: 'Uptime SLA' },
-                ].map(({ value, label }) => (
+                ].map(({ value, label }, i) => (
                   <div key={label} className="space-y-1">
-                    <p className="text-3xl font-black text-white">{value}</p>
+                    <p ref={el => { statValueRefs.current[i] = el }} className="text-3xl font-black text-white">{value}</p>
                     <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest leading-tight">{label}</p>
                   </div>
                 ))}
