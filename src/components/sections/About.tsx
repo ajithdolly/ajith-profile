@@ -100,7 +100,7 @@ export default function About() {
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-gold-600 animate-ping" />
-            <span className="text-xs font-mono uppercase tracking-widest text-white/50">About the Engineer</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-white/50">About Me</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
             <span
