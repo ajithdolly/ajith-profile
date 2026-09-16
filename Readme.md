@@ -9,3 +9,6 @@
 
 So **`npm run build` alone never deploys**. Deployment happens when you push to `main`.
 Auto deployment with yaml
+
+Deployment pipeline : 
+https://github.com/ajithdolly/ajith-profile/actions?utm_source=chatgpt.com

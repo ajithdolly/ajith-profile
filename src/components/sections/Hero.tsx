@@ -83,11 +83,11 @@ export default function Hero() {
                 99.9% Uptime
               </span>
               <span className="text-white/40">•</span>
-              <span>React • Spring Boot • Python</span>
+              <span>SAP AI • Python • LLM / RAG</span>
               <span className="text-white/40">•</span>
               <span className="text-white/70">Docker & Cloud</span>
               <span className="text-white/40">•</span>
-              <span className="text-white/70">SAP AI Core</span>
+              <span className="text-white/70">ERP</span>
             </div>
 
             {/* Tagline */}
