@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { identity } from '../../data/content'
+import profilePhoto from '../photos/Ajith.jpeg'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -162,7 +163,7 @@ export default function Hero() {
                 {/* Photo — fills card like the reference video */}
                 <div className="relative">
                   <img
-                    src="/profile.jpg"
+                    src={profilePhoto}
                     alt="Ajith Dollichan"
                     className="pointer-events-none block w-full object-cover rounded-xl"
                     style={{
