@@ -42,7 +42,7 @@ export const skills: Skill[] = [
     title: 'Cloud & DevOps',
     tag: 'INFRASTRUCTURE',
     desc: 'Deploying and operating production-grade applications on cloud platforms using Docker, GitHub Actions, and CI/CD pipelines.',
-    skills: ['Docker', 'GitHub Actions', 'CI/CD', 'SAP AI Core', 'Firebase', 'Git'],
+    skills: ['Docker', 'Kubernetes', 'GitHub Actions', 'CI/CD', 'SAP AI Core', 'SAP BTP', 'Git'],
   },
   {
     title: 'Algorithmic Problem Solving',

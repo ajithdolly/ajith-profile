@@ -101,7 +101,7 @@ export default function About() {
       const stats = [
         { target: 3,    suffix: '+',  decimals: 0, index: 0 },
         { target: 100,  suffix: 'K+', decimals: 0, index: 1 },
-        { target: 2,    suffix: '',   decimals: 0, index: 2 },
+        { target: 5,    suffix: '+',  decimals: 0, index: 2 },
         { target: 99.9, suffix: '%',  decimals: 1, index: 3 },
       ]
       stats.forEach(({ target, suffix, decimals, index }) => {
@@ -255,7 +255,7 @@ export default function About() {
                 {[
                   { value: '3+',    label: 'Years Experience' },
                   { value: '100K+', label: 'Txns/day supported' },
-                  { value: '2',     label: 'Production AI Systems' },
+                  { value: '5+',    label: 'LLM Use Cases' },
                   { value: '99.9%', label: 'Uptime SLA' },
                 ].map(({ value, label }, i) => (
                   <div key={label} className="space-y-1">
@@ -305,7 +305,7 @@ export default function About() {
             <BentoCard num="05" className="p-8 md:p-10">
               <div className="relative z-10 space-y-4">
                 <h3 className="text-xs font-mono uppercase tracking-widest text-gold-500 font-bold">
-                  Awards &amp; Recognition
+                  Awards &amp; Breakthroughs
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {awards.map((a) => (

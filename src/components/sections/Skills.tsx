@@ -159,7 +159,7 @@ export default function Skills() {
           style={{
             fontSize: 'clamp(8rem, 24vw, 26rem)',
             color: 'transparent',
-            WebkitTextStroke: '1px rgba(212,175,55,0.13)',
+            WebkitTextStroke: '1px rgba(212,175,55,0.50)',
             lineHeight: 1,
             letterSpacing: '-0.02em',
           }}
