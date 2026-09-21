@@ -77,3 +77,28 @@
 .skills-perspective {
   perspective: 1000px;
 }
+
+/* Scroll direction hint */
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+@keyframes hintFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(6px); }
+}
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-6px); }
+}
+
+.scroll-hint-enter {
+  animation: hintFadeIn 0.25s ease forwards;
+}
+.scroll-hint-exit {
+  animation: hintFadeOut 0.4s ease forwards;
+}

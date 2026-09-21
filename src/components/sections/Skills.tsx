@@ -52,6 +52,10 @@ export default function Skills() {
   const cardsRef    = useRef<(HTMLDivElement | null)[]>([])
   const bgLayersRef = useRef<(HTMLDivElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
+  const [hintDir, setHintDir] = useState<'down' | 'up' | null>(null)
+  const [hintExiting, setHintExiting] = useState(false)
+  const hintTimerRef   = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const touchStartRef  = useRef<{ x: number; y: number } | null>(null)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -128,12 +132,45 @@ export default function Skills() {
     return () => ctx.revert()
   }, [])
 
+  const showHint = (dir: 'down' | 'up') => {
+    setHintExiting(false)
+    setHintDir(dir)
+    if (hintTimerRef.current) clearTimeout(hintTimerRef.current)
+    hintTimerRef.current = setTimeout(() => {
+      setHintExiting(true)
+      hintTimerRef.current = setTimeout(() => setHintDir(null), 400)
+    }, 1600)
+  }
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) + 10) {
+      showHint(e.deltaX > 0 ? 'down' : 'up')
+    }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!touchStartRef.current) return
+    const dx = e.touches[0].clientX - touchStartRef.current.x
+    const dy = e.touches[0].clientY - touchStartRef.current.y
+    if (Math.abs(dx) > Math.abs(dy) + 10 && Math.abs(dx) > 25) {
+      showHint(dx < 0 ? 'down' : 'up')
+      touchStartRef.current = null
+    }
+  }
+
   return (
     <section
       id="skills"
       ref={sectionRef}
       className="relative w-full h-svh min-h-[600px] bg-[#0b0b0b] text-white overflow-hidden select-none"
       style={{ perspective: '1200px' }}
+      onWheel={handleWheel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
     >
       {/* ── Per-card background glow (upper-right amber source) ── */}
       {skills.map((_, i) => (
@@ -273,6 +310,35 @@ export default function Skills() {
         </span>
         <div className="w-px h-8 bg-gradient-to-b from-white/15 to-transparent" />
       </div>
+
+      {/* ── Horizontal-scroll redirect hint ── */}
+      {hintDir && (
+        <div
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-40 pointer-events-none ${hintExiting ? 'scroll-hint-exit' : 'scroll-hint-enter'}`}
+        >
+          <div
+            className="flex flex-col items-center gap-3 px-8 py-5 rounded-2xl"
+            style={{
+              background: 'rgba(0,0,0,0.72)',
+              border: '1px solid rgba(0,194,255,0.22)',
+              backdropFilter: 'blur(14px)',
+            }}
+          >
+            <span
+              className="text-2xl"
+              style={{
+                color: 'rgba(0,194,255,0.85)',
+                animation: hintDir === 'down' ? 'bounceDown 0.55s ease infinite' : 'bounceUp 0.55s ease infinite',
+              }}
+            >
+              {hintDir === 'down' ? '↓' : '↑'}
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/55">
+              Scroll your mouse / trackpad {hintDir === 'down' ? '↓ down' : '↑ up'}
+            </span>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
